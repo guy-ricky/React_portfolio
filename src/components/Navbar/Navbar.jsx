@@ -7,10 +7,10 @@ import {RiServiceFill} from 'react-icons/ri'
 import {AiFillPhone} from 'react-icons/ai'
 import { useState } from 'react'
 const Navbar = () => {
-  const[activeNav, setActiveNav] = useState('#, #about, #experience, #portfolio, #contact')
+  const[activeNav, setActiveNav] = useState('#home, #about, #experience, #portfolio, #contact')
   return (
    <nav>
-    <a href='#' onClick={() => setActiveNav('#')} className={activeNav === '#' ? 'active' : ''}><AiOutlineHome/></a>
+    <a href='#home' onClick={() => setActiveNav('#home')} className={activeNav === '#home' ? 'active' : ''}><AiOutlineHome/></a>
     <a href='#about' onClick={() => setActiveNav('#about')} className={activeNav === '#about' ? 'active' : ''}><AiOutlineUser/></a>
     <a href='#experience' onClick={() => setActiveNav('#experience')} className={activeNav === '#experience' ? 'active' : ''}><BiBook/></a>
     <a href='#portfolio' onClick={() => setActiveNav('#portfolio')} className={activeNav === '#portfolio' ? 'active' : ''}><RiServiceFill/></a>
