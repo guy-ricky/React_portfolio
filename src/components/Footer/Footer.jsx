@@ -7,10 +7,10 @@ const Footer = () => {
   return (
     <section id='footer'>
       <footer>
-       <a href='#' className='footer__logo'>ERICK</a>
+       <a href='#home' className='footer__logo'>ERICK</a>
 
        <ul className='permalinks'>
-        <li><a href='#'>Home</a></li>
+        <li><a href='#home'>Home</a></li>
         <li><a href='#about'>About</a></li>
         <li><a href='#experince'>Experiences</a></li>
         <li><a href='#services'>Services</a></li>
