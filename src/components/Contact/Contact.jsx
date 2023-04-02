@@ -1,9 +1,36 @@
-import React from 'react'
+import React, {  useRef, useState } from 'react'
+import emailjs from '@emailjs/browser';
 import './contact.css'
 import {MdOutlineEmail} from 'react-icons/md'
 import {RiMessengerLine} from 'react-icons/ri'
 import {BsWhatsapp} from 'react-icons/bs'
+
+const Result =() =>{
+  return(
+    <p>Your message has been sent successfully. I will get back to you soon</p>
+  )
+}
+
 const Contact = () => {
+  const [result, showResult] = useState(false);
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_gz7gmcf', 'template_hk4j6kd', form.current, 'lPT73z-nR7XqWBWDv')
+      .then((result) => {
+          console.log(result.text)
+          console.log("message sent")
+      }, (error) => {
+          console.log(error.text);
+      });
+      e.target.reset();
+      showResult(true);
+  };
+
+  setTimeout(() =>{
+    showResult(false)
+  }, 5000)
   return (
    <section id='contact'>
     <h5>Get In Touch</h5>
@@ -33,12 +60,14 @@ const Contact = () => {
           <a href='https://api.whatsapp.com/send?phone=254745932555' target='_blank' rel='noreferrer'>Send A Message</a>
         </article>
       </div>
-      <form action=''>
-      <input type='text' name='name' placeholder='Your Full Name' required/>
-      <input type='email' name='email' placeholder='Your Email' required/>
+      <form ref={form} className='form-contact' onSubmit={sendEmail}>
+      <input id='fname' type='text' name='user_name' placeholder='Your Full Name' />
+      <input id='email' type='email' name='user_email' placeholder='Your Email' />
       <textarea name='message' rows='7' placeholder='Your Message' required></textarea>
-      <button type='submit' className='btn btn-primary'> Send Message</button>
+      <button id='submit' type='submit' className='btn btn-primary' value="Send Message"> Send Message</button>
+      <div>{result ? <Result/> : null}</div>
       </form>
+      
     </div>
     </section>
   )
